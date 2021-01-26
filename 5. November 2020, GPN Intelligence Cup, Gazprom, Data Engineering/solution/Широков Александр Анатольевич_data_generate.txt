@@ -1,0 +1,35 @@
+# генерация данных для sales в большом объёме
+import psycopg2.extras
+import numpy as np
+import psycopg2
+import datetime
+
+good_name = np.array([f'Toвар{i // 10}{i % 10}' for i in range(1, 21)])
+store_id = np.arange(1, 16)
+date = [datetime.date(2020, i, j) for i in range(8, 11) for j in range(1, 30)]
+columns = ['check_num', 'sales_date', 'store_id', 'good_name', 's_count', 's_sum']
+
+def generate_check(i, columns, d=datetime.date(2020, 8, 1), store_id=1, good_name=good_name):
+    check_num = 1000 + i
+    result = [[check_num, d, store_id, 
+               good,
+               np.random.randint(1, 60), 
+               np.random.randint(100, 6000)] for good in good_name]
+    return pd.DataFrame(result, columns=columns)
+
+result = pd.DataFrame(columns=columns)
+p = 1
+res = []
+for d in date:
+    for j in store_id:
+        result  = pd.concat((result , generate_check(1000 + p, columns, d=d, store_id=j, good_name=good_name)))
+        p+=1
+
+result['sales_date'] = pd.to_datetime(result['sales_date'])
+params='host=127.0.0.1 user=postgres password=my_password dbname=postgres port=5432' #заменил my_password
+SQL = '''INSERT INTO sales VALUES %s'''
+with psycopg2.connect(params) as conn:
+    with conn.cursor() as cur:
+        print('connected')
+        psycopg2.extras.execute_values(cur, SQL, result.values)  
+        conn.commit()

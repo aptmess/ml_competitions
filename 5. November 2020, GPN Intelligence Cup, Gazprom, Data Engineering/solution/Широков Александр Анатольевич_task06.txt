@@ -1,0 +1,51 @@
+-- POSTGRES SQL
+-- Идея следующая: были сгенерированы данные за два дня 2020-08-01-2020-08-01 в двух магазинах: store_id = 1, 2
+-- 1.Построим колонку дат f от 9 часов самого первого дня до 21 часов последнего дня
+-- 2. Соединим с помощью LEFT JOIN по event_ts > соответствующего timestamp f и сгруппируем по времени, просуммируя столбец event_type. 
+-- так мы получим значение людей в разрезе каждого часа
+-- 3. Воспользуемся следующей идеей - у нас два состояния (-1) и (1), поэтому можно применить аналог cumsum - кумулятивной суммы. 
+-- Данная сумма будет показывать нахождение количества людей в каждый час.
+-- Соответственно в запрос можно добавить дополнительное условие на нужную нам date и нужный store_id
+
+WITH tmp AS
+( 
+	SELECT 
+	generate_series('2020-08-01 09:00:00'::timestamp, 
+					'2020-08-02 21:00:00'::timestamp, 
+					'1 hour') as f
+)
+
+SELECT 
+f as time, 
+store_id, 
+SUM(sum) OVER (ORDER BY f ASC) as cumulative
+FROM
+(
+	SELECT 
+	tmp.f, 
+	store_arcs.store_id,  
+	SUM(store_arcs.event_type) 
+	FROM 
+	tmp
+	LEFT JOIN 
+	store_arcs 
+	ON
+	store_arcs.event_ts >= tmp.f 
+	AND 
+	store_arcs.event_ts < tmp.f + interval '1 hour'
+WHERE 
+	store_id NOT IN (0)
+GROUP BY 
+	tmp.f,  
+	store_arcs.store_id, 
+	store_arcs.event_type
+ORDER BY 
+	store_arcs.store_id, 
+	tmp.f
+) AS a
+WHERE 
+store_id = 1
+ORDER BY
+f, 
+store_id 
+ASC

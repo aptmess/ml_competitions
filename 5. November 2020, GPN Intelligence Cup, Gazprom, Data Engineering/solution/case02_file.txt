@@ -1,0 +1,161 @@
+VSAM
+SAP (Deprecated)
+HTTP
+        esb_conn1 - [ID: esb_conn1]
+        test_connection_metr1 - [ID: test_connection_metr1]
+        test_connection_metr - [ID: test_connection_metr]
+        esb_conn - [ID: esb_conn]
+DB2I
+SQLSERVER
+        FIFA_EDC_DW - [ID: FIFA_EDC_DW]
+        DATASCIENCE - [ID: DATASCIENCE]
+        DDB888_WAREHOUSE_METRIKA - [ID: DDB888_WAREHOUSE_METRIKA]
+        DDB888_SRC_BERLIO_ODBC - [ID: DDB888_SRC_BERLIO_ODBC]
+        Order_System - [ID: Order_System]
+        SRC_BERLIO - [ID: SRC_BERLIO]
+        DEMO_TIRT_SRC - [ID: DEMO_TIRT_SRC]
+        DBB_02_Order_System - [ID: DBB_02_Order_System]
+        OC_CD_KAZAHSTAN - [ID: OC_CD_KAZAHSTAN]
+        DATA - [ID: DATA]
+        DEMO_MC_SRC - [ID: DEMO_MC_SRC]
+        WAREHOUSE_DEV4 - [ID: WAREHOUSE_DEV4]
+        FIFA_BDM_DIS - [ID: FIFA_BDM_DIS]
+        SRC_DB_LINEAGE - [ID: SRC_DB_LINEAGE]
+        WAREHOUSE_LINEAGE_NO_BRACKETS - [ID: WAREHOUSE_LINEAGE_NO_BRACKETS]
+        SRC_BERLIO_LINEAGE - [ID: SRC_BERLIO_LINEAGE]
+        DEMO_FILE_SRC - [ID: DEMO_FILE_SRC]
+        FIFA_EDC_AS - [ID: FIFA_EDC_AS]
+        SRC_FILE_LINEAGE - [ID: SRC_FILE_LINEAGE]
+        mssql_domain_auth_test - [ID: mssql_domain_auth_test]
+        WAREHOUSE - [ID: WAREHOUSE]
+        DEMO_KPSS_STG - [ID: DEMO_KPSS_STG]
+        TIRT_1C - [ID: TIRT_1C]
+        ASU_AZS_FILE_MOSCOW - [ID: ASU_AZS_FILE_MOSCOW]
+        FIFA_EDC_WF - [ID: FIFA_EDC_WF]
+        SRC_FILE - [ID: SRC_FILE]
+        OC_CD_NOVOSIBIRSK - [ID: OC_CD_NOVOSIBIRSK]
+        GPN_FAST_TRAN - [ID: GPN_FAST_TRAN]
+        SRC_TIRT_LINEAGE_NO_BRACKETS - [ID: SRC_TIRT_LINEAGE_NO_BRACKETS]
+        DDB888_DATA_ODBC - [ID: DDB888_DATA_ODBC]
+        SRC_ASPB_LINEAGE - [ID: SRC_ASPB_LINEAGE]
+        DDB888_WAREHOUSE_ODBC - [ID: DDB888_WAREHOUSE_ODBC]
+        DEMO_KPSS_STG1 - [ID: DEMO_KPSS_STG1]
+        AG01_WAREHOUSE_ODBC - [ID: AG01_WAREHOUSE_ODBC]
+        OC_CD_OMSK - [ID: OC_CD_OMSK]
+        WAREHOUSE_LINEAGE - [ID: WAREHOUSE_LINEAGE]
+        TRN_ASUBD - [ID: TRN_ASUBD]
+        SRC_TIRT_DEMO - [ID: SRC_TIRT_DEMO]
+        WAREHOUSE_DEV03 - [ID: WAREHOUSE_DEV03]
+        SRC_FILES - [ID: SRC_FILES]
+        EM - [ID: EM]
+        SRC_TIRT_LINEAGE1 - [ID: SRC_TIRT_LINEAGE1]
+        FIFA_EDC_PF - [ID: FIFA_EDC_PF]
+        ASU_KPSS - [ID: ASU_KPSS]
+        OC_CD_URAL - [ID: OC_CD_URAL]
+        OC_CD_KUZBASS - [ID: OC_CD_KUZBASS]
+        DBB01_WAREHOUSE_METRIKA - [ID: DBB01_WAREHOUSE_METRIKA]
+        DBB_01_SRC_FILE - [ID: DBB_01_SRC_FILE]
+        DEMO_KPSS_SRC - [ID: DEMO_KPSS_SRC]
+        SRC_TIRT - [ID: SRC_TIRT]
+        ASU_AZS_FILE_URAL - [ID: ASU_AZS_FILE_URAL1]
+        DEMO_TRAN_STG - [ID: DEMO_TRAN_STG]
+        SRC_MK - [ID: SRC_MK]
+        SRC_TIRT_LINEAGE - [ID: SRC_TIRT_LINEAGE]
+        SRC_FILE_LINEAGE_NO_BRACKETS - [ID: SRC_FILE_LINEAGE_NO_BRACKETS]
+        SRC_MK_LINEAGE - [ID: SRC_MK_LINEAGE]
+        ASU_AZS_FILE_NOVOSIBIRSK - [ID: ASU_AZS_FILE_NOVOSIBIRSK]
+        WAREHOUSE1 - [ID: WAREHOUSE1]
+        DATA1 - [ID: DATA1]
+        Order_System_dbt02 - [ID: Order_System_dbt02]
+IMS
+ORACLE
+ADABAS
+WEB SERVICES
+ODBC
+        CN_BB29_GPAY_ODBC - [ID: CN_BB29_GPAY_ODBC]
+        SRC_GPAY - [ID: SRC_GPAY]
+DB2
+DB2Z
+SEQ
+AZURECLOUDPROVISIONINGCONNECTION
+GreenplumPT
+        CN_BB29_GPAY_GP - [ID: CN_BB29_GPAY_GP]
+TWITTER
+LINKEDIN
+HBASE
+        HBASE_Cluster - [ID: HBASE_Cluster]
+LDAP
+MAPRSTREAMS
+AZUREDW
+ADLSV2
+AZUREBLOB
+TWITTERSTREAMING
+AZUREEVENTHUB
+MSDYNAMICS
+SAPAPPLICATIONS
+SNOWFLAKE
+TeradataPT
+JDBC
+        hive_jdbc_internet_sources - [ID: NewConnection]
+        DBB01_SRC_FILE_SQOOP - [ID: DBB01_SRC_FILE_SQOOP]
+        DBB01_WAREHOUSE_SQOOP - [ID: DBB01_WAREHOUSE_SQOOP]
+        RP_SQL_DB_GPN_RPCF_SQOOP - [ID: RP_SQL_DB_GPN_RPCF_SQOOP]
+        sqoop_namos_moscow_test_domain - [ID: sqoop_namos_moscow_test_domain]
+        JDBC_Test_Namos_EMV - [ID: JDBC_Test_Namos_EMV]
+        AG01_WAREHOUSE_SQOOP - [ID: AG01_WAREHOUSE_SQOOP]
+        RP_SQL_DB_GPN_RPUF_SQOOP - [ID: RP_SQL_DB_GPN_RPUF_SQOOP]
+        Copy_Of_WAREHOUSE - [ID: Copy_Of_WAREHOUSE]
+        CN_BB29_GPAY - [ID: postgres]
+        CN_BB29_GPAY_test - [ID: CN_BB29_GPAY_test]
+        DDB888_WAREHOUSE_SQOOP - [ID: DDB888_WAREHOUSE_SQOOP]
+        DDB888_order_system_sqoop - [ID: DDB888_order_system_sqoop]
+        Test - [ID: Test]
+        RP_SQL_DB_GPN_RP_SFALL_SQOOP - [ID: RP_SQL_DB_GPN_RP_SFALL_SQOOP]
+        DDB888_WAREHOUSE_GPAY_SQOOP - [ID: DDB888_WAREHOUSE_GPAY_SQOOP]
+        sqoop_order_system - [ID: sqoop_order_system]
+        TRN_ASUBD_SQOOP - [ID: TRN_ASUBD_SQOOP]
+        CN_SQL02_CN_DB_SQOOP - [ID: CN_SQL02_CN_DB_SQOOP]
+        TIRT_1C_SQOOP - [ID: TIRT_1C_SQOOP]
+        CN_BB29_GPAY_SQOOP - [ID: CN_BB29_GPAY_SQOOP]
+        WAREHOUSE_DEV03_SQOOP - [ID: WAREHOUSE_DEV03_SQOOP]
+        sqoop_namos_moscow_test - [ID: sqoop_namos_moscow_test]
+        DDB888_DATA_SQOOP - [ID: DDB888_DATA_SQOOP]
+        EM_SQOOP - [ID: EM_SQOOP]
+AMAZONS3
+SALESFORCE
+ODATA
+TABLEAU
+DATASIFT
+HIVE
+        HIVE_Cluster_test_dsv1 - [ID: HIVE_Cluster_test_dsv1]
+        HIVE_Cluster_TEST_AVM - [ID: HIVE_Cluster_TEST_AVM]
+        HIVE_Cluster_internet_sources - [ID: HIVE_Cluster_internet_sources]
+        HIVE_Cluster_TIRT_EDC - [ID: HIVE_Cluster_TIRT_EDC]
+        HIVE_Cluster_EM - [ID: HIVE_Cluster_EM]
+        HIVE_Cluster_DB - [ID: HIVE_Cluster_DB]
+        HIVE_Cluster_TIRT - [ID: HIVE_Cluster_TIRT]
+        HIVE_Cluster_test - [ID: HIVE_Cluster_test]
+        HIVE_Cluster_test1 - [ID: HIVE_Cluster_test1]
+        HIVE_Cluster_Bug - [ID: HIVE_Cluster_Bug]
+        HIVE_Cluster_DB_RP - [ID: HIVE_Cluster_DB_RP]
+        HIVE_Cluster_QV_UNLOADING - [ID: HIVE_Cluster_QV_UNLOADING]
+        HIVE_Cluster_FILE - [ID: HIVE_Cluster_FILE]
+        HIVE_Cluster_gpay - [ID: HIVE_Cluster_gpay]
+        HIVE_Cluster - [ID: HIVE_Cluster]
+        HIVE_Cluster_TRN_ASUBD - [ID: HIVE_Cluster_TRN_ASUBD]
+        HIVE_Cluster_DSHB - [ID: HIVE_Cluster_DSHB]
+        HIVE_Cluster_test_dsv - [ID: HIVE_Cluster_test_dsv]
+AMAZONREDSHIFT
+SFDC
+FACEBOOK
+WEBCONTENT - KAPOWKATALYST
+HADOOP
+        HADOOP_Cluster - [ID: HADOOP_Cluster]
+KAFKA
+HadoopFileSystem
+        HDFS_Cluster - [ID: HDFS_Cluster]
+NETEZZA
+AMAZONKINESIS
+JDEE1
+JMS
+AWSCLOUDPROVISIONINGCONNECTION

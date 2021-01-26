@@ -1,0 +1,126 @@
+--- PostgresSQL
+-- Задание я разбил на два этапа - информация о ТОП 3 товарах по сумме продаж в разрезе
+-- месяцев для каждого региона и добавление к данной таблице статистик из задания
+-- Первую задачу я решил следующим образом - сначала сделал LEFT JOIN с таблицей stores по столбцу store_id, чтобы получить название региона, затем сгруппировал по месяцам, региону и -- товару, а затем применил оконную функцию RANK() OVER (PARTITION BY month_number, store_region ORDER BY total DESC), чтобы получить РАНГ наибольших сумм продаж по месяцам и региону.
+-- Затем, я выбираю те строчки, ранг которых равен (1, 2, 3) (в этом преимущество метода - можно выбирать TOP n товаров) - получили первую часть задания.
+-- Вторая часть добавление статистик из задания - группировал по годам и региону, по месяцу и региону, по месяцу и товару и находил общие суммы - просто технически верно надо было расписать -- условия, а затем делал LEFT JOIN с общей таблицей и доводил таблицу в тот вид, который просят в задании - процентная статистика. 
+
+-- PART 1 - ТОП 3 товаров по сумме продаж для каждого региона в разрезе месяцев
+WITH r as
+(
+	SELECT month_number, store_region, good_name, total FROM
+	(
+		SELECT 
+		month_number, 
+		store_region, 
+		good_name, 
+		total,
+		RANK() OVER (PARTITION BY month_number, store_region ORDER BY total DESC) as rank_of_total
+		FROM
+		(
+			SELECT 
+			date_part('month', sales_date) AS month_number, 
+			store_region, good_name, 
+			SUM(s_sum) as total
+			FROM
+			sales 
+			LEFT JOIN
+			stores
+			ON sales.store_id = stores.store_id
+			GROUP BY 1, 2, 3
+			ORDER BY 1, 2, 3 ASC
+		) as a
+	) as b
+	WHERE rank_of_total IN (1, 2, 3)
+)
+
+-- PART 2
+---Добавление колонок---
+SELECT 
+month_number, 
+store_region, 
+good_name, 
+top_3, 
+round((top_3::float / task1_total_by_year::float * 100)::numeric, 3) AS task1,
+round((top_3::float / task2_sum::float * 100)::numeric, 2) AS task2,
+round((top_3::float / total_task3::float * 100)::numeric, 2) AS task3
+FROM
+(
+	SELECT 
+	r.month_number, 
+	r.store_region, 
+	r.good_name, 
+	r.total AS top_3,  
+	b.total_by_year AS task1_total_by_year,
+	d.sum AS task2_sum,
+	u.total AS total_task3 
+	FROM
+	r
+
+--- % от суммы породаж каждого товара в данном регионе за год
+	LEFT JOIN
+	(
+		SELECT store_region, sum(total) as total_by_year
+		FROM(
+			SELECT 
+			date_part('year', sales_date) AS y, 
+			store_region, 
+			good_name, 
+			SUM(s_sum) as total
+			FROM
+			sales
+			LEFT JOIN
+			stores
+			ON sales.store_id = stores.store_id
+			GROUP BY 1, 2, 3
+			ORDER BY 1, 2, 3 ASC
+		) AS a
+-- Выбрал период за этот год
+	WHERE y = 2020 
+	GROUP BY store_region
+	) AS b
+	ON r.store_region = b.store_region
+
+-- % от суммы продаж каждого товара по всей сети за месяц
+	LEFT JOIN
+	(
+		SELECT 
+		m, 
+		good_name, 
+		SUM(total)
+		FROM(
+			SELECT 
+			date_part('month', sales_date) AS m, 
+			store_region, 
+			good_name, 
+			SUM(s_sum) as total
+			FROM
+			sales
+			LEFT JOIN
+			stores
+			ON sales.store_id = stores.store_id
+			GROUP BY 1, 2, 3
+			ORDER BY 1, 2, 3 ASC
+		) as b
+		GROUP BY 1,2
+		ORDER BY 1, 2, 3 ASC
+	) AS d
+	ON r.month_number = d.m AND r.good_name = d.good_name
+
+-- % от суммы продаж каждого товара за месяц в данном регионе
+	LEFT JOIN
+	(
+		SELECT 
+		date_part('month', sales_date) AS m, 
+		store_region,
+		SUM(s_sum) as total
+		FROM
+		sales
+		LEFT JOIN
+		stores
+		ON sales.store_id = stores.store_id
+		GROUP BY 1, 2
+		ORDER BY 1, 2 ASC
+	) AS u
+	ON r.month_number = u.m and r.store_region = u.store_region	
+) AS result

@@ -1,0 +1,31 @@
+#!/bin/bash
+string="find $1 -type f -name '*.txt' -newermt $2"
+output=$(eval "$string")
+echo "$output"
+currentDate=`date +"%Y-%m-%d %T"`
+for device in $output:
+do
+   path="$(dirname $device)"
+   step1="$(basename $device)"
+   name_of_file=${step1/:}
+   change_date=$(eval "date -r $path/$name_of_file")
+   last_use=$(stat -c %y $path/$name_of_file) 
+   mem_use_step=$(wc -c $path/$name_of_file | awk '{print $1 / 1024 / 1024}')
+   number_of_lines_in_file=$(eval "grep -c $ $path/$name_of_file")
+   echo $currentDate, $path, $name_of_file, $change_date, $last_use, $mem_use_step, $number_of_lines_in_file >> $3
+done
+
+#запуск происходит следующим образом:
+#bash "Название скрипта".sh /home 2020-11-10 /home/alexshirokov/reslt.csv
+#где /home - будут искаться все текстовые файлы в директории /home
+#2020-11-10 - дата, с которой будут искаться файлы
+#/home/alexshirokov/result.csv - запись в csv файл
+#сначала происходит поиск всех текстовых файлов (с разрешением txt)
+#данная информация выводится в консоль
+#path - путь до файла
+#name_of_file - название файла
+#change_date - дата-время последнего изменения файла
+#last_use - дата-время последнего доступа к файлу
+#mem_use_step - перевожу из байт в мегабайт
+#number_of_lines_in_file - количество строк в файле
+#вывожу в цикле for по одной строке для каждого найденного файла информацию в csv файл 

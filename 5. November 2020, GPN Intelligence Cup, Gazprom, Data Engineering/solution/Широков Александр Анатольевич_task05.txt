@@ -1,0 +1,54 @@
+-- Postqres SQL
+-- Сгенерируем многочисленные данные с помощью файла "Широков Александр Анатольевич_data_generate.txt" за 3 месяца данного года - с августа по октябрь
+-- далее создаётся одна общая таблица для 4-х условий в задании
+SELECT 
+a.month_number, task1, task2, task3, task4 
+FROM 
+-- Одновременно продан товар01 и товар 02
+(
+	SELECT 
+	date_part('month', sales_date) AS month_number,
+	SUM(s_sum) as task1 
+	FROM sales 
+	WHERE 
+	good_name IN ('Toвар01', 'Toвар02')
+	GROUP BY 1
+) AS a
+
+-- Продан только товар01 (вместе с ним могут быть любые другие товары, кроме товар02)
+LEFT JOIN
+(
+	SELECT 
+	date_part('month', sales_date) AS month_number,
+	SUM(s_sum) as task2 
+	FROM sales 
+	WHERE 
+	good_name='Toвар01' AND good_name !='Toвар02'
+	GROUP BY 1
+) AS b
+ON a.month_number = b.month_number
+
+-- Продан только товарO2
+LEFT JOIN
+(
+	SELECT 
+	date_part('month', sales_date) AS month_number,
+	SUM(s_sum) as task3 
+	FROM sales 
+	WHERE 
+	good_name='Toвар02'
+	GROUP BY 1
+) AS c
+ON a.month_number = c.month_number
+
+--Ни товар01, ни товар 02 не присутствуют в чеке
+LEFT JOIN
+(
+	SELECT 
+	date_part('month', sales_date) AS month_number,
+	SUM(s_sum) as task4 
+	FROM sales 
+	WHERE good_name NOT IN ('Toвар01', 'Toвар02')
+	GROUP BY 1
+) AS d
+ON a.month_number = d.month_number
