@@ -1,0 +1,7 @@
+data/train/*
+data/in/*
+.idea
+data/test/*
+data/out/*
+data/weight/*
+__pycache__/

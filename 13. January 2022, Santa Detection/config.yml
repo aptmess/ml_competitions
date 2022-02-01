@@ -1,0 +1,35 @@
+exp_name: 'butterflies'
+outdir: './data/weight/'
+
+weights:
+    classification_model_path: './data/weight/model_santa.pth'
+
+cuda_id: '0'
+
+dataset:
+    seed: 239
+    num_of_classes: 3
+    input_size: 224
+    crop_size: 1.5
+    batch_size: 18
+    augmentations: 'default'
+    augmentations_valid: 'default'
+    num_workers: 16
+
+model:
+    model_type: 'efficientnet_b7'
+    # model_type: 'resnext101_32x8d'
+    # model_type: 'resnet34'
+
+train:
+    optimizer: 'Adam'
+    learning_rate: 0.002
+    momentum: 0.9
+    lr_schedule: 'reduce'
+    n_epoch: 13
+    label_smoothing: true
+    eps: 0.01
+    freq_vis: 500
+    
+utils:
+    num: 2693078
