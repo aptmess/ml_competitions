@@ -1,0 +1,7 @@
+model_one:
+  model: './models/model/distilbert_wordpiece_70k'
+  tokenizer: './models/tokenizers/wordpiece_70k.json'
+
+model_two:
+  model: './models/model/distilbert_bpe_60k'
+  tokenizer: './models/tokenizers/bpe_60k.json'

@@ -1,0 +1,3 @@
+model_one:
+  model: './models/model/distilbert_wordpiece_111k'
+  tokenizer: './models/tokenizers/wordpiece_111k.json'

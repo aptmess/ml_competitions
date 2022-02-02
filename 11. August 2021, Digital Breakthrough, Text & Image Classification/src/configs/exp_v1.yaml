@@ -1,0 +1,61 @@
+distilbert_wordpiece_80k:
+  paths:
+    path_name: 'v3'
+    item_names_path: 'item_name.txt'
+    data_names_path: 'train_data.csv'
+    path_checkpoint: 'final'
+    categories_name: 'categories.txt'
+#    skip_typology:
+#      - 'прочие'
+    path_tr: 'item_name_train.txt'
+    path_valid: 'item_name_valid.txt'
+    valid_split: 0.15
+  save_names:
+    tokenizer_name: wordpiece_80k.json
+    classification_model_name: distilbert
+  args:
+    language_model:
+      model_name: 'DISTILBERT'
+      training_args:
+        overwrite_output_dir: True
+        evaluation_strategy: "steps"
+        num_train_epochs: 5
+        learning_rate: 0.00005
+        per_device_train_batch_size: 32
+        save_steps: 300000
+        save_total_limit: 1
+      model:
+        max_position_embeddings: 512
+        vocab_size: 80000
+        n_heads: 8
+        dim: 512
+        hidden_dim: 2048
+      dataset:
+        block_size: 64
+      data_collator:
+        mlm: True
+        mlm_probability: 0.25
+
+    classification_model:
+      max_len: 32
+      train:
+        epochs: 5
+        batch_size: 64
+        validation_split: 0.3
+        verbose: 1
+    tokenizers:
+      type: "WordPieceTrainer"
+      tokenizer_args:
+        unk_token: "[UNK]"
+      trainer_args:
+        special_tokens:
+          - "[UNK]"
+          - "[CLS]"
+          - "[SEP]"
+          - "[PAD]"
+          - "[MASK]"
+        vocab_size: 80000
+      pre_tokenizer:
+        - "whitespace"
+        - "digits"
+      normalizer: "lowercase"

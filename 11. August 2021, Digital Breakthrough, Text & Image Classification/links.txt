@@ -1,0 +1,17 @@
+https://discuss.huggingface.co/t/number-of-epochs-in-pre-training-bert/1776
+https://stepik.org/lesson/521797/step/1?unit=514324
+https://huggingface.co/transformers/main_classes/trainer.html#trainingarguments
+https://towardsdatascience.com/fine-tuning-pretrained-nlp-models-with-huggingfaces-trainer-6326a4456e7b
+https://github.com/southbridgeio/slurm-school-k8s
+https://www.youtube.com/watch?v=LohzlG005I4
+https://huggingface.co/transformers/training.html#fine-tuning-a-pretrained-model
+https://www.analyticsvidhya.com/blog/2021/06/why-and-how-to-use-bert-for-nlp-text-classification/
+https://huggingface.co/transformers/model_doc/roberta.html
+https://colab.research.google.com/github/allenai/longformer/blob/master/scripts/convert_model_to_long.ipynb#scrollTo=Zl_hDDlryVo2
+https://arxiv.org/pdf/2004.05150.pdf
+https://colab.research.google.com/github/YuvalPeleg/transformers-workshop/blob/master/Fine_Tuning_Sentence_Classification.ipynb#scrollTo=Hba10sXR7Xi6
+https://www.analyticsvidhya.com/blog/2020/07/transfer-learning-for-nlp-fine-tuning-bert-for-text-classification/
+https://keras.io/examples/nlp/semantic_similarity_with_bert/
+https://github.com/vlarine/transformers-ru
+https://huggingface.co/DeepPavlov/rubert-base-cased-sentence
+https://github.com/tensorflow/tensorflow/issues/36508

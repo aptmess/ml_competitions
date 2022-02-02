@@ -1,0 +1,28 @@
+exp_name: 'airotica'
+outdir: './EXPERIMENTS/'
+cuda_id: '0'
+path:
+    input_path: './data/test.csv'
+    test_images_path: './data/images/'
+dataset:
+    seed: 123
+    num_of_classes: 15
+    input_size: 224
+    crop_size: 1.5
+    batch_size: 48
+    augmentations: 'default'
+    augmentations_valid: 'default'
+    num_workers: 16
+
+model:
+    model_type: 'resnext101_32x8d'
+
+train:
+    optimizer: 'SGD'
+    learning_rate: 0.002
+    momentum: 0.9
+    lr_schedule: 'cosine'
+    n_epoch: 21
+    label_smoothing: true
+    eps: 0.01
+    freq_vis: 500
